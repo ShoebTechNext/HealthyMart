@@ -4,24 +4,164 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1F2937;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f9fafb;
+    --foreground: #1F2937;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  * {
+    @apply border-healthy-charcoal-lighter;
+  }
+
+  ::selection {
+    @apply bg-healthy-green/20 text-healthy-green-dark;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-card shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .card-lg {
+    @apply bg-white rounded-card-lg shadow-card-lg transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-card bg-healthy-green hover:bg-healthy-green-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-healthy-green focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-healthy-green font-semibold rounded-card border-2 border-healthy-green hover:bg-healthy-green/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-healthy-green focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 text-healthy-charcoal font-medium rounded-card hover:bg-healthy-charcoal-lighter/10 transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-card border border-healthy-charcoal-lighter/50 bg-white text-healthy-charcoal placeholder-healthy-charcoal-lighter focus:outline-none focus:ring-2 focus:ring-healthy-green focus:border-transparent transition-all duration-200;
+  }
+
+  .section {
+    @apply py-16 sm:py-24 lg:py-32;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl sm:text-4xl font-bold text-healthy-charcoal tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply font-body text-lg sm:text-xl text-healthy-charcoal-lighter mt-4 max-w-2xl;
+  }
+
+  .gradient-blob {
+    @apply absolute rounded-full blur-3xl opacity-20;
+  }
+
+  .gradient-blob-green {
+    @apply bg-healthy-green;
+  }
+
+  .gradient-blob-charcoal {
+    @apply bg-healthy-charcoal;
+  }
+
+  .prose-custom {
+    @apply font-body text-healthy-charcoal-lighter leading-relaxed;
+  }
+
+  .prose-custom h2 {
+    @apply font-heading text-2xl font-bold text-healthy-charcoal mt-8 mb-4;
+  }
+
+  .prose-custom h3 {
+    @apply font-heading text-xl font-semibold text-healthy-charcoal mt-6 mb-3;
+  }
+
+  .prose-custom p {
+    @apply mb-4;
+  }
+
+  .prose-custom ul {
+    @apply list-disc list-inside mb-4 space-y-2;
+  }
+
+  .prose-custom li {
+    @apply text-healthy-charcoal-lighter;
+  }
+
+  .prose-custom strong {
+    @apply text-healthy-charcoal font-semibold;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
