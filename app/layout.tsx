@@ -38,7 +38,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthymart.example.com"),
-  title: {
+    verification: {
+    google: "tc3T8iJtcrFKa7bCgvZnOwc4wzt1zTVe4WKnzagGkEY",
+  },
+  title: { 
     default: "HealthyMart — Premium Health Supplements Reviewed",
     template: "%s | HealthyMart",
   },
